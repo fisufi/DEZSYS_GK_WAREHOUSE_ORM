@@ -1,0 +1,4 @@
+### GET request to example server
+GET http://localhost:8080/product?ID=1&warehouseID=1&productID=1&quantity=1&productName=MacBook
+
+###
