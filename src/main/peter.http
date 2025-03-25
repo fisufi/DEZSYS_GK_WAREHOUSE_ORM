@@ -1,4 +1,73 @@
-### GET request to example server
-GET http://localhost:8080/product?ID=1&warehouseID=1&productID=1&quantity=1&productName=MacBook
+### GET request to retrieve all products
+GET http://localhost:8080/product
 
-###
+### GET request to retrieve a product by its ID
+GET http://localhost:8080/product/7
+
+### POST request to add a new product
+POST http://localhost:8080/product
+Content-Type: application/json
+
+{
+  "warehouseID": "1",
+  "productID": "7",
+  "productName": "MacBook",
+  "productCategory": "Electronics",
+  "productQuantity": 1.0
+}
+
+### DELETE request to delete a product by its ID
+DELETE http://localhost:8080/product/7
+
+
+
+
+### GET request to retrieve all warehouses
+GET http://localhost:8080/warehouse
+
+### GET request to retrieve a warehouse by its ID
+GET http://localhost:8080/warehouse/3
+
+### POST request to add a new warehouse
+POST http://localhost:8080/warehouse
+Content-Type: application/json
+
+{
+  "warehouseID": "3",
+  "warehouseName": "Lager 3",
+  "location": "Wien",
+  "city": "Wien",
+  "country": "Austria",
+  "postalCode": "1210",
+  "name": "Lager 3",
+  "id": "3"
+}
+
+### DELETE request to delete a warehouse by its ID
+DELETE http://localhost:8080/warehouse/3
+
+### DELETE request to delete a warehouse by its ID
+DELETE http://localhost:8080/warehouse/2
+
+
+### DELETE request to delete a product by its ID
+DELETE http://localhost:8080/product/1
+
+### GET request to retrieve a product by its ID
+GET http://localhost:8080/product/1
+
+
+### GET request to filter by warehouse ID 1
+GET http://localhost:8080/product?warehouseID=1
+
+### GET request to filter by warehouse ID 1 and product name "Bio Apfelsaft Gold"
+GET http://localhost:8080/product?warehouseID=1&productName=Bio%20Apfelsaft%20Gold
+
+### GET request to filter by products with quantity less than 500
+GET http://localhost:8080/product?productQuantity=500
+
+### GET request to filter by warehouse ID 1 and quantity less than 500
+GET http://localhost:8080/product?warehouseID=1&productQuantity[lte]=500
+
+### GET request to filter by product categories "Waschmittel" and "Getraenk"
+GET http://localhost:8080/product?productCategory=Waschmittel&productCategory=Getraenk

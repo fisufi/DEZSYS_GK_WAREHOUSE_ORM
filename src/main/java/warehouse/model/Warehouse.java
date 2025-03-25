@@ -2,20 +2,35 @@ package warehouse.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.List;
 
+import java.util.List;
 @Document(collection = "warehouses")
 public class Warehouse {
+
     @Id
     private String id;
-    private String name;
-    private String location;
-    private String postalCode;
-    private String city;
-    private String country;
-    private List<ProductData> products;
+    private String warehouseName;
+    private String timestamp;
+    private String warehousePostalCode;
+    private String warehouseCity;
+    private String warehouseCountry;
+    private List<ProductData> inventory;
 
-    // Getters and Setters
+    // Default constructor
+
+    public Warehouse() {
+    }
+
+    // Constructor with parameters
+    public Warehouse(String id, String warehouseName, String location, String warehousePostalCode, String warehouseCity, String warehouseCountry) {
+        this.id = id;
+        this.warehouseName = warehouseName;
+        this.warehousePostalCode = warehousePostalCode;
+        this.warehouseCity = warehouseCity;
+        this.warehouseCountry = warehouseCountry;
+    }
+
+    // Getters and setters
 
     public String getId() {
         return id;
@@ -25,51 +40,51 @@ public class Warehouse {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public List<ProductData> getInventory() {
+        return inventory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setInventory(List<ProductData> inventory) {
+        this.inventory = inventory;
     }
 
-    public String getLocation() {
-        return location;
+    public String getWarehouseName() {
+        return warehouseName;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getCity() {
-        return city;
+    public String getWarehousePostalCode() {
+        return warehousePostalCode;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setWarehousePostalCode(String warehousePostalCode) {
+        this.warehousePostalCode = warehousePostalCode;
     }
 
-    public String getCountry() {
-        return country;
+    public String getWarehouseCity() {
+        return warehouseCity;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setWarehouseCity(String warehouseCity) {
+        this.warehouseCity = warehouseCity;
     }
 
-    public List<ProductData> getProducts() {
-        return products;
+    public String getWarehouseCountry() {
+        return warehouseCountry;
     }
 
-    public void setProducts(List<ProductData> products) {
-        this.products = products;
+    public void setWarehouseCountry(String warehouseCountry) {
+        this.warehouseCountry = warehouseCountry;
     }
 }

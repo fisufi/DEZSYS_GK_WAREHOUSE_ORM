@@ -1,3 +1,4 @@
+// WarehouseService.java
 package warehouse.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +7,13 @@ import warehouse.model.Warehouse;
 import warehouse.repository.WarehouseRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WarehouseService {
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     private WarehouseRepository warehouseRepository;
@@ -18,11 +23,24 @@ public class WarehouseService {
     }
 
     public List<Warehouse> getAllWarehouses() {
-        return warehouseRepository.findAll();
+        List<Warehouse> warehouses = warehouseRepository.findAll();
+        for (Warehouse warehouse : warehouses) {
+            String id = warehouse.getId();
+            warehouse.setInventory(productService.getProductsByWarehouseID(id));
+        }
+        return warehouses;
     }
 
     public Warehouse getWarehouseById(String id) {
-        return warehouseRepository.findById(id).orElse(null);
+        Optional<Warehouse> warehouseOptional = warehouseRepository.findById(id);
+        if (warehouseOptional.isEmpty()) {
+            return null;
+        }
+        Warehouse warehouse = warehouseOptional.get();
+        warehouse.setInventory(productService.getProductsByWarehouseID(id));
+        warehouse.getId();
+        warehouse.getWarehouseCity();
+        return warehouse;
     }
 
     public void deleteWarehouse(String id) {

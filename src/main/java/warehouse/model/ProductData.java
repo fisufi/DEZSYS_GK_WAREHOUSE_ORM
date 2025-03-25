@@ -7,10 +7,10 @@ import org.springframework.data.annotation.Id;
 
 public class ProductData {
 
-    @Id
-	private String ID;
+
 
 	private String warehouseID;
+	@Id
 	private String productID;
 	private String productName;
 	private String productCategory;
@@ -29,14 +29,6 @@ public class ProductData {
 		this.productName = productName;
 		this.productCategory = productCategory;
 		this.productQuantity = productQuantity;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String ID) {
-		this.ID = ID;
 	}
 
 	public String getWarehouseID() {
